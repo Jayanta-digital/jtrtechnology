@@ -1,0 +1,112 @@
+{
+  "_demoId": "ramanujan",
+
+  "school": {
+    "name":        "Ramanujan Science Academy",
+    "shortName":   "RSA",
+    "tagline":     "Where Scientists Are Born",
+    "description": "Ramanujan Science Academy – Assam's premier Science stream institute with integrated JEE/NEET coaching. AHSEC affiliated.",
+    "established": "2010",
+    "affiliation": "AHSEC",
+    "boardCode":   "18115",
+
+    "hero": {
+      "badge":     "Top Science College – Kamrup",
+      "heading":   "Crack JEE & NEET",
+      "highlight": "With Expert Guidance",
+      "subtext":   "Specialized Science stream with integrated JEE/NEET coaching. 98% pass rate. Admissions open 2025-26.",
+      "btn1Text":  "Enroll Now",
+      "btn1Link":  "admission.html",
+      "btn2Text":  "Download Prospectus",
+      "btn2Link":  "#",
+      "infoBadge": "AHSEC Affiliated"
+    },
+
+    "contact": {
+      "phone":    "+91 94350 12345",
+      "email":    "info@ramanujanacademy.edu.in",
+      "whatsapp": "919435012345",
+      "hours":    "Mon–Sat: 7 AM – 6 PM"
+    },
+
+    "location": {
+      "address":     "College Road, Hojai",
+      "city":        "Hojai",
+      "state":       "Assam",
+      "pincode":     "782435",
+      "fullAddress": "College Road, Hojai, Assam – 782435"
+    }
+  },
+
+  "branding": {
+    "logo":  "https://ui-avatars.com/api/?name=RSA&background=0a2240&color=00c9ff&size=200&font-size=0.4&bold=true",
+    "hero":  "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&q=80",
+    "about": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80"
+  },
+
+  "people": {
+    "director": {
+      "enabled":       true,
+      "name":          "Mr. Prasen Deka",
+      "designation":   "Founder",
+      "qualification": "B.Tech, MBA",
+      "experience":    "20+ years",
+      "photo":         "https://randomuser.me/api/portraits/men/60.jpg",
+      "message":       "We built this institution to give every student from Assam a fair shot at IIT and AIIMS."
+    },
+    "md": {
+      "enabled":       false,
+      "name":          "",
+      "designation":   "Managing Director",
+      "photo":         ""
+    },
+    "principal": {
+      "enabled":       true,
+      "name":          "Dr. Kamal Bhuyan",
+      "designation":   "Principal",
+      "qualification": "Ph.D. Physics – IIT Guwahati",
+      "experience":    "18+ years",
+      "photo":         "https://randomuser.me/api/portraits/men/47.jpg",
+      "message":       "Science opens doors to infinite possibilities. We make every student exam-ready and career-ready."
+    }
+  },
+
+  "teachers": [
+    { "name": "Dr. Amrit Kalita",  "subject": "Mathematics",  "qualification": "Ph.D. – IITG", "experience": "15+ years", "photo": "https://randomuser.me/api/portraits/men/34.jpg",   "stream": "science", "showOnHome": true },
+    { "name": "Prof. Suman Das",   "subject": "Physics HOD",  "qualification": "M.Sc., NET",   "experience": "13+ years", "photo": "https://randomuser.me/api/portraits/men/20.jpg",   "stream": "science", "showOnHome": true },
+    { "name": "Dr. Priyanka Nath", "subject": "Chemistry",    "qualification": "Ph.D.",        "experience": "12+ years", "photo": "https://randomuser.me/api/portraits/women/36.jpg", "stream": "science", "showOnHome": true },
+    { "name": "Prof. Mina Saikia", "subject": "Biology",      "qualification": "M.Sc., NET",   "experience": "10+ years", "photo": "https://randomuser.me/api/portraits/women/52.jpg", "stream": "science", "showOnHome": true }
+  ],
+
+  "streams": { "arts": false, "science": true, "commerce": false },
+
+  "notices": [
+    {
+      "id": 1, "title": "JEE/NEET Batch Starts March 1, 2025",
+      "date": "2025-02-18", "category": "Batch Schedule",
+      "description": "New JEE/NEET 2026 batch begins March 1. Limited seats.",
+      "pdfUrl": "#", "isImportant": true, "showOnHome": true, "showOnNoticePage": true
+    },
+    {
+      "id": 2, "title": "Science Stream Admissions Open 2025-26",
+      "date": "2025-02-01", "category": "Admission",
+      "description": "45 seats for Science. Physics, Chemistry, Math/Bio, Computer Science.",
+      "pdfUrl": "#", "isImportant": true, "showOnHome": true, "showOnNoticePage": true
+    },
+    {
+      "id": 3, "title": "AHSEC Practical Timetable",
+      "date": "2025-01-10", "category": "Examination",
+      "description": "Class 12 practical exams begin Feb 18. Check individual schedules.",
+      "pdfUrl": "#", "isImportant": false, "showOnHome": false, "showOnNoticePage": true
+    }
+  ],
+
+  "academic": {
+    "session": "2025-26", "lastDate": "March 15, 2025",
+    "seats": { "science": 45 }
+  },
+
+  "stats": {
+    "yearsOfExcellence": 15, "alumniCount": 2000, "passPercentage": 98, "studentsCount": 600
+  }
+}
