@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
+    <title>Notice Board - Pragya Valley Academy</title>
+    <meta name="description" content="Official notice board of Pragya Valley Academy. Admissions, exam schedules, events, scholarships and all important announcements.">
+
+    <link rel="icon" type="image/png" href="https://drive.google.com/uc?export=view&id=YOUR_FAVICON_ID">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* ── PAGE HEADER ── */
+        .notices-page-header {
+            background: linear-gradient(135deg, var(--primary-dark, #1e5cbe) 0%, var(--bg-main, #151c2c) 100%);
+            padding: 160px 0 70px;
+            text-align: center;
+            color: #fff;
+        }
+        .notices-page-header .section-subtitle { margin-bottom: 14px; }
+        .notices-page-header h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; margin: 0 0 14px; color: #fff; }
+        .notices-page-header p  { font-size: 1.05rem; color: rgba(255,255,255,.75); max-width: 560px; margin: 0 auto; }
+
+        /* ── MAIN LAYOUT ── */
+        .notices-main { padding: 70px 0 90px; }
+        .notices-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* ── FILTER BAR ── */
+        .notices-filter-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .filter-btn {
+            padding: 8px 20px;
+            border-radius: 999px;
+            border: 1px solid rgba(61,142,240,.25);
+            background: var(--bg-card, #1e2a3e);
+            color: var(--text-light, #a8bdd1);
+            cursor: pointer;
+            font-size: .85rem;
+            font-weight: 500;
+            transition: all .2s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary, #3d8ef0);
+            color: #fff;
+            border-color: var(--primary, #3d8ef0);
+        }
+
+        /* ── NOTICE LIST ── */
+        .notices-list { display: flex; flex-direction: column; gap: 16px; }
+
+        /* ── NOTICE CARD ── */
+        .notice-item {
+            background: var(--bg-card, #1e2a3e);
+            border: 1px solid rgba(61,142,240,.12);
+            border-radius: 14px;
+            padding: 24px 28px;
+            transition: border-color .2s, transform .2s, box-shadow .2s;
+        }
+        .notice-item:hover {
+            border-color: rgba(61,142,240,.35);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,.25);
+        }
+        .notice-item.important {
+            border-left: 4px solid var(--secondary, #ff7825);
+        }
+
+        /* header row */
+        .notice-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .notice-category {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 999px;
+            background: rgba(61,142,240,.15);
+            color: var(--primary, #3d8ef0);
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+        .notice-new-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: #ef4444;
+            color: #fff;
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .06em;
+            animation: noticePulse 1.8s ease-in-out infinite;
+        }
+        @keyframes noticePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,.5); }
+            50%       { box-shadow: 0 0 0 6px rgba(239,68,68,0); }
+        }
+        .notice-date {
+            margin-left: auto;
+            font-size: .8rem;
+            color: var(--text-muted, #637f9a);
+        }
+        .notice-date i { margin-right: 5px; }
+
+        /* title + desc */
+        .notice-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark, #eaf0f8);
+            margin: 0 0 8px;
+        }
+        .notice-desc {
+            font-size: .9rem;
+            color: var(--text-light, #a8bdd1);
+            line-height: 1.65;
+            margin: 0 0 14px;
+        }
+
+        /* download button */
+        .notice-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 20px;
+            border-radius: 8px;
+            background: var(--primary, #3d8ef0);
+            color: #fff;
+            font-size: .85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background .2s, transform .2s;
+        }
+        .notice-download:hover {
+            background: var(--primary-dark, #1e5cbe);
+            transform: translateY(-1px);
+        }
+        .notice-download i { font-size: .95rem; }
+
+        .no-notices {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted, #637f9a);
+            font-size: 1rem;
+        }
+
+        /* ── SIDEBAR ── */
+        .notices-sidebar { display: flex; flex-direction: column; gap: 24px; }
+
+        .sidebar-card {
+            background: var(--bg-card, #1e2a3e);
+            border: 1px solid rgba(61,142,240,.12);
+            border-radius: 14px;
+            padding: 24px;
+        }
+        .sidebar-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark, #eaf0f8);
+            margin: 0 0 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(61,142,240,.12);
+        }
+
+        /* category list */
+        .category-list { list-style: none; margin: 0; padding: 0; }
+        .category-list li {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 9px 0;
+            border-bottom: 1px solid rgba(61,142,240,.06);
+            cursor: pointer;
+            color: var(--text-light, #a8bdd1);
+            font-size: .88rem;
+            transition: color .2s;
+        }
+        .category-list li:last-child { border-bottom: none; }
+        .category-list li:hover { color: var(--primary, #3d8ef0); }
+        .cat-count {
+            background: rgba(61,142,240,.12);
+            color: var(--primary, #3d8ef0);
+            border-radius: 999px;
+            padding: 2px 9px;
+            font-size: .75rem;
+            font-weight: 700;
+        }
+
+        /* quick links */
+        .sidebar-links { list-style: none; margin: 0; padding: 0; }
+        .sidebar-links li { padding: 8px 0; border-bottom: 1px solid rgba(61,142,240,.06); }
+        .sidebar-links li:last-child { border-bottom: none; }
+        .sidebar-links a {
+            color: var(--text-light, #a8bdd1);
+            font-size: .88rem;
+            text-decoration: none;
+            display: flex; align-items: center; gap: 8px;
+            transition: color .2s;
+        }
+        .sidebar-links a i { color: var(--secondary, #ff7825); font-size: .8rem; }
+        .sidebar-links a:hover { color: var(--primary, #3d8ef0); }
+
+        /* ── PDF MODAL ── */
+        .notice-modal-overlay {
+            display: none;
+            position: fixed; inset: 0; z-index: 100000;
+            background: rgba(8,14,28,.88);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .notice-modal-overlay.open { display: flex; }
+        .notice-modal-box {
+            background: var(--bg-card, #1e2a3e);
+            border-radius: 18px;
+            width: 100%; max-width: 820px; max-height: 92vh;
+            display: flex; flex-direction: column; overflow: hidden;
+            border: 1px solid rgba(61,142,240,.22);
+            box-shadow: 0 24px 64px rgba(0,0,0,.6);
+        }
+        .notice-modal-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 20px 26px 16px;
+            border-bottom: 1px solid rgba(61,142,240,.1);
+        }
+        .notice-modal-header h3 {
+            margin: 0; font-size: 1.05rem; font-weight: 700;
+            color: var(--text-dark, #eaf0f8); flex: 1;
+        }
+        .notice-modal-close {
+            background: none; border: none;
+            color: var(--text-muted, #637f9a);
+            font-size: 1.8rem; cursor: pointer;
+            line-height: 1; padding: 0 2px;
+            transition: color .2s;
+        }
+        .notice-modal-close:hover { color: var(--text-dark, #eaf0f8); }
+        .notice-modal-desc { margin: 0; padding: 10px 26px 4px; font-size: .88rem; color: var(--text-light, #a8bdd1); }
+        .notice-modal-pdf { flex: 1; min-height: 420px; overflow: hidden; }
+        .notice-modal-pdf iframe { width: 100%; height: 100%; min-height: 420px; border: none; display: block; }
+        .notice-modal-footer {
+            display: flex; gap: 12px; padding: 16px 26px;
+            border-top: 1px solid rgba(61,142,240,.1);
+            flex-wrap: wrap; align-items: center;
+        }
+        .modal-close-btn {
+            background: var(--bg-light, #1c2438);
+            color: var(--text-light, #a8bdd1);
+            border: 1px solid rgba(61,142,240,.2);
+            border-radius: 8px; padding: 10px 22px;
+            cursor: pointer; font-size: .9rem;
+            transition: background .2s;
+        }
+        .modal-close-btn:hover { background: rgba(61,142,240,.12); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .notices-layout { grid-template-columns: 1fr; }
+            .notices-sidebar { order: -1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STICKY ADMISSION BUTTON -->
+    <a href="admission.html" class="sticky-btn" aria-label="Apply for Admission">
+        <i class="fas fa-edit"></i>
+        <span>Apply Now</span>
+    </a>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text" data-school-name>Pragya Valley Academy</span>
+            </a>
+            <button class="mobile-toggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="faculty.html">Faculty</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="notices.html" class="active">Notices</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admission.html" class="nav-cta">Admission 2025</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="notices-page-header">
+        <div class="container">
+            <span class="section-subtitle">Stay Updated</span>
+            <h1>Notice Board</h1>
+            <p>All important announcements, exam schedules, events, and updates from <span data-school-name>Pragya Valley Academy</span></p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <section class="notices-main">
+        <div class="container">
+            <div class="notices-layout">
+
+                <!-- LEFT: NOTICE LIST -->
+                <div class="notices-left">
+                    <!-- Filter Buttons (built by JS) -->
+                    <div class="notices-filter-bar" id="notices-filter-bar">
+                        <button class="filter-btn active" data-filter="all">All Notices</button>
+                    </div>
+
+                    <!-- Notice Cards -->
+                    <div class="notices-list" id="notices-list" data-notices-full>
+                        <!-- Populated by config-loader.js -->
+                        <p class="no-notices"><i class="fas fa-spinner fa-spin"></i> Loading notices...</p>
+                    </div>
+                </div>
+
+                <!-- RIGHT: SIDEBAR -->
+                <aside class="notices-sidebar">
+
+                    <!-- Categories -->
+                    <div class="sidebar-card">
+                        <h4><i class="fas fa-tags" style="margin-right:8px;color:var(--secondary)"></i>Categories</h4>
+                        <ul class="category-list" id="notice-categories">
+                            <!-- Built by JS -->
+                        </ul>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="sidebar-card">
+                        <h4><i class="fas fa-link" style="margin-right:8px;color:var(--secondary)"></i>Quick Links</h4>
+                        <ul class="sidebar-links">
+                            <li><a href="admission.html"><i class="fas fa-chevron-right"></i> Admission 2025-26</a></li>
+                            <li><a href="results.html"><i class="fas fa-chevron-right"></i> Results</a></li>
+                            <li><a href="programs.html"><i class="fas fa-chevron-right"></i> Our Programs</a></li>
+                            <li><a href="faculty.html"><i class="fas fa-chevron-right"></i> Meet Our Faculty</a></li>
+                            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Card -->
+                    <div class="sidebar-card">
+                        <h4><i class="fas fa-phone-alt" style="margin-right:8px;color:var(--secondary)"></i>Contact Us</h4>
+                        <p style="font-size:.88rem;color:var(--text-light);margin-bottom:12px;">
+                            For queries about any notice, call or WhatsApp us:
+                        </p>
+                        <p style="font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:6px;">
+                            <i class="fas fa-phone" style="color:var(--primary);margin-right:6px;"></i>
+                            <a href="#" style="color:inherit;text-decoration:none;" data-phone-link data-phone></a>
+                        </p>
+                        <p style="font-size:.88rem;color:var(--text-muted);" data-hours></p>
+                    </div>
+
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF MODAL -->
+    <div class="notice-modal-overlay" id="notice-pdf-modal" role="dialog" aria-modal="true" aria-labelledby="modal-notice-title">
+        <div class="notice-modal-box">
+            <div class="notice-modal-header">
+                <h3 id="modal-notice-title"></h3>
+                <button class="notice-modal-close" id="modal-close-x" aria-label="Close">&times;</button>
+            </div>
+            <p class="notice-modal-desc" id="modal-notice-desc"></p>
+            <div class="notice-modal-pdf">
+                <iframe id="modal-pdf-frame" src="" frameborder="0" allowfullscreen title="Notice PDF"></iframe>
+            </div>
+            <div class="notice-modal-footer">
+                <a id="modal-pdf-download" href="#" class="notice-download" download>
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+                <button class="modal-close-btn" id="modal-close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo" data-school-name>Pragya Valley Academy</a>
+                    <p>Assam's premier higher secondary institute affiliated to AHSEC. Excellence in Arts, Science & Commerce.</p>
+                    <div class="social-links"></div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="faculty.html">Faculty</a></li>
+                        <li><a href="results.html">Results</a></li>
+                        <li><a href="notices.html">Notices</a></li>
+                        <li><a href="admission.html">Admission</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="arts.html">Arts Stream</a></li>
+                        <li><a href="science.html">Science Stream</a></li>
+                        <li><a href="commerce.html">Commerce Stream</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info"></ul>
+                </div>
+            </div>
+            <!-- footer-bottom injected by footer-generator.js -->
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/config.js"></script>
+    <!-- 🎯 DYNAMIC DEMO CONTROLLER -->
+    <script src="js/dynamic-demo.js"></script>
+    <script src="js/config-loader.js"></script>
+    <script src="js/footer-generator.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+    // ── NOTICE PAGE INTERACTIVE LOGIC ──
+    // Runs after config-loader.js has populated [data-notices-full]
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // ── Build category filter buttons from CONFIG.notices ──
+        var filterBar      = document.getElementById("notices-filter-bar");
+        var categoriesUl   = document.getElementById("notice-categories");
+        var noticesList    = document.getElementById("notices-list");
+
+        if (!filterBar || !noticesList) return;
+
+        // Gather categories
+        var catCount = {};
+        (CONFIG.notices || []).forEach(function (n) {
+            if (n.showOnNoticePage === false) return;
+            catCount[n.category] = (catCount[n.category] || 0) + 1;
+        });
+
+        // Build filter buttons
+        Object.keys(catCount).forEach(function (cat) {
+            var btn = document.createElement("button");
+            btn.className = "filter-btn";
+            btn.setAttribute("data-filter", cat);
+            btn.textContent = cat + " (" + catCount[cat] + ")";
+            filterBar.appendChild(btn);
+        });
+
+        // Build sidebar category list
+        if (categoriesUl) {
+            Object.keys(catCount).forEach(function (cat) {
+                var li   = document.createElement("li");
+                li.setAttribute("data-cat-filter", cat);
+                var span = document.createElement("span");
+                span.textContent = cat;
+                var cnt  = document.createElement("span");
+                cnt.className   = "cat-count";
+                cnt.textContent = catCount[cat];
+                li.appendChild(span);
+                li.appendChild(cnt);
+                categoriesUl.appendChild(li);
+                li.addEventListener("click", function () { applyFilter(cat); });
+            });
+        }
+
+        // Filter logic
+        function applyFilter(filter) {
+            var cards = noticesList.querySelectorAll(".notice-item");
+            cards.forEach(function (card) {
+                var cat = card.getAttribute("data-category");
+                card.style.display = (filter === "all" || cat === filter) ? "" : "none";
+            });
+            // Update active button
+            filterBar.querySelectorAll(".filter-btn").forEach(function (b) {
+                b.classList.toggle("active", b.getAttribute("data-filter") === filter);
+            });
+            if (categoriesUl) {
+                categoriesUl.querySelectorAll("li").forEach(function (li) {
+                    li.style.color = (li.getAttribute("data-cat-filter") === filter)
+                        ? "var(--primary)" : "";
+                });
+            }
+        }
+
+        filterBar.addEventListener("click", function (e) {
+            var btn = e.target.closest(".filter-btn");
+            if (!btn) return;
+            applyFilter(btn.getAttribute("data-filter"));
+        });
+
+        // Add data-category attribute to each notice card for filtering
+        // We rebuild notice cards here to attach data-category + click handler
+        var notices = (CONFIG.notices || []).filter(function (n) { return n.showOnNoticePage !== false; });
+        noticesList.innerHTML = "";
+
+        if (!notices.length) {
+            noticesList.innerHTML = '<p class="no-notices">No notices at this time.</p>';
+            return;
+        }
+
+        notices.forEach(function (n) {
+            var card = buildNoticeCard(n);
+            noticesList.appendChild(card);
+        });
+
+        // ── PDF Modal ──
+        var modal     = document.getElementById("notice-pdf-modal");
+        var modalTitle= document.getElementById("modal-notice-title");
+        var modalDesc = document.getElementById("modal-notice-desc");
+        var modalFrame= document.getElementById("modal-pdf-frame");
+        var modalDl   = document.getElementById("modal-pdf-download");
+        var closeX    = document.getElementById("modal-close-x");
+        var closeBtn  = document.getElementById("modal-close-btn");
+
+        function openModal(title, desc, pdfUrl) {
+            modalTitle.textContent = title || "Notice";
+            modalDesc.textContent  = desc  || "";
+            var previewUrl = convertToPreview(pdfUrl);
+            modalFrame.src = previewUrl || "";
+            if (pdfUrl && pdfUrl !== "#") {
+                modalDl.href         = convertToDownload(pdfUrl);
+                modalDl.style.display = "inline-flex";
+            } else {
+                modalDl.style.display = "none";
+            }
+            modal.classList.add("open");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            modal.classList.remove("open");
+            modalFrame.src = "";
+            document.body.style.overflow = "";
+        }
+
+        closeX.addEventListener("click",   closeModal);
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeModal(); });
+
+        // Build a notice card DOM element
+        function buildNoticeCard(n) {
+            var isNew = (function () {
+                if (!n.date) return false;
+                var d = new Date(n.date);
+                return !isNaN(d.getTime()) && (Date.now() - d.getTime()) / 86400000 <= 30;
+            })();
+            var dateFmt = "";
+            if (n.date) {
+                var d = new Date(n.date);
+                if (!isNaN(d.getTime())) dateFmt = d.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
+            }
+
+            var card = document.createElement("div");
+            card.className = "notice-item" + (n.isImportant ? " important" : "");
+            card.setAttribute("data-category", n.category || "");
+
+            // Header
+            var hdr = document.createElement("div");
+            hdr.className = "notice-header";
+
+            var catBadge = document.createElement("span");
+            catBadge.className   = "notice-category";
+            catBadge.textContent = n.category || "";
+
+            hdr.appendChild(catBadge);
+
+            if (isNew) {
+                var newBadge = document.createElement("span");
+                newBadge.className   = "notice-new-badge";
+                newBadge.textContent = "NEW";
+                hdr.appendChild(newBadge);
+            }
+
+            var dateSpan = document.createElement("span");
+            dateSpan.className = "notice-date";
+            dateSpan.innerHTML = '<i class="fas fa-calendar-alt"></i> ' + (dateFmt || n.date || "");
+            hdr.appendChild(dateSpan);
+
+            // Title
+            var title = document.createElement("h4");
+            title.className   = "notice-title";
+            title.textContent = n.title || "";
+
+            // Description
+            var desc = document.createElement("p");
+            desc.className   = "notice-desc";
+            desc.textContent = n.description || "";
+
+            card.appendChild(hdr);
+            card.appendChild(title);
+            card.appendChild(desc);
+
+            // PDF button OR View button
+            if (n.pdfUrl && n.pdfUrl !== "#") {
+                var dlBtn = document.createElement("a");
+                dlBtn.className = "notice-download";
+                dlBtn.innerHTML = '<i class="fas fa-file-pdf"></i> View / Download PDF';
+                dlBtn.href      = n.pdfUrl;
+                dlBtn.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    openModal(n.title, n.description, n.pdfUrl);
+                });
+                card.appendChild(dlBtn);
+            }
+
+            return card;
+        }
+
+        // Google Drive URL converters
+        function convertToPreview(url) {
+            if (!url || url === "#") return "";
+            var m = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+            if (m) return "https://drive.google.com/file/d/" + m[1] + "/preview";
+            var m2 = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+            if (m2 && url.includes("drive.google.com")) return "https://drive.google.com/file/d/" + m2[1] + "/preview";
+            if (/\.pdf$/i.test(url)) return "https://docs.google.com/viewer?url=" + encodeURIComponent(url) + "&embedded=true";
+            return url;
+        }
+        function convertToDownload(url) {
+            if (!url || url === "#") return "#";
+            var m = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+            if (m) return "https://drive.google.com/uc?export=download&id=" + m[1];
+            return url;
+        }
+    });
+    </script>
+</body>
+</html>

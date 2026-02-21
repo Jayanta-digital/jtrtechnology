@@ -1,0 +1,21 @@
+{
+    "name": "Pragya Valley Academy",
+    "short_name": "Pragya Valley",
+    "description": "Premier Higher Secondary Institute in Assam affiliated to AHSEC",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#2A4B7C",
+    "theme_color": "#E67E22",
+    "icons": [
+        {
+            "src": "https://drive.google.com/uc?export=view&id=YOUR_ICON_192_ID",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "https://drive.google.com/uc?export=view&id=YOUR_ICON_512_ID",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

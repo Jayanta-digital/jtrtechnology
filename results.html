@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
+    <title>Results & Achievements - AHSEC Toppers | Pragya Valley Academy</title>
+    <meta name="description" content="View AHSEC results and achievements of Pragya Valley Academy students. Filter by stream and year. Download result brochures.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .results-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 160px 0 80px;
+            color: white;
+            text-align: center;
+        }
+        
+        .filter-section {
+            padding: 40px 0;
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 80px;
+            z-index: 90;
+        }
+        
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-select {
+            padding: 12px 30px;
+            border: 2px solid var(--primary-light);
+            border-radius: 40px;
+            font-size: 16px;
+            cursor: pointer;
+            background: white;
+            min-width: 200px;
+        }
+        
+        .results-grid {
+            padding: 60px 0;
+        }
+        
+        .year-section {
+            margin-bottom: 60px;
+        }
+        
+        .year-title {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--secondary);
+            display: inline-block;
+        }
+        
+        .toppers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .result-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .result-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .result-photo {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .result-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .result-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .result-info h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .result-stream {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .result-percentage {
+            font-size: 28px;
+            color: var(--primary);
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .result-rank {
+            background: var(--primary-light);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 14px;
+            color: var(--primary);
+        }
+        
+        .download-section {
+            padding: 60px 0;
+            background: var(--bg-light);
+        }
+        
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .download-card {
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .download-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .download-card i {
+            font-size: 48px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .stats-highlight {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 60px 0;
+            background: var(--gradient-1);
+            color: white;
+            text-align: center;
+        }
+        
+        @media (max-width: 1024px) {
+            .toppers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .download-grid,
+            .stats-highlight {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .toppers-grid,
+            .download-grid,
+            .stats-highlight {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-select {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky elements -->
+    <div class="sticky-admission">
+        <a href="admission.html" class="sticky-btn">
+            <i class="fas fa-graduation-cap"></i>
+            <span class="tooltip">Apply Now</span>
+        </a>
+    </div>
+
+    <a href="https://wa.me/917000000000" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><span data-school-short-name>Pragya<span>Valley</span></span></a>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="results.html" class="active">Results</a></li>
+                <li><a href="faculty.html">Faculty</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="notices.html">Notices</a></li>
+                <li><a href="notices.html">Notices</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admission.html" class="nav-cta">Admission 2025</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="results-header">
+        <div class="container">
+            <h1>Results & Achievements</h1>
+            <p>Celebrating the success of our students in AHSEC examinations</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <span>Results</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Highlight -->
+    <section class="stats-highlight">
+        <div class="stat-box">
+            <h3 data-pass-percentage>95</h3>
+            <p>Overall Pass %</p>
+        </div>
+        <div class="stat-box">
+            <h3>100+</h3>
+            <p>State Rankers</p>
+        </div>
+        <div class="stat-box">
+            <h3>25+</h3>
+            <p>Years of Excellence</p>
+        </div>
+        <div class="stat-box">
+            <h3>5000+</h3>
+            <p>Alumni</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-container">
+                <select id="streamFilter" class="filter-select">
+                    <option value="all">All Streams</option>
+                    <option value="arts">Arts</option>
+                    <option value="science">Science</option>
+                    <option value="commerce">Commerce</option>
+                </select>
+                
+                <select id="yearFilter" class="filter-select">
+                    <option value="2025">2025</option>
+                    <option value="2024" selected>2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Grid -->
+    <section class="results-grid">
+        <div class="container">
+            <!-- 2024 Results -->
+            <div class="year-section" data-year="2024">
+                <h2 class="year-title">AHSEC Results 2024</h2>
+                
+                <!-- Arts Toppers 2024 -->
+                <div class="stream-section" data-stream="arts">
+                    <h3 style="margin: 30px 0 20px; color: var(--secondary);">Arts Stream Toppers</h3>
+                    <div class="toppers-grid" data-arts-2024>
+                        <!-- Dynamic content from config -->
+                        <div class="result-card">
+                            <div class="result-photo">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Sharma">
+                            </div>
+                            <div class="result-info">
+                                <h3>Priya Sharma</h3>
+                                <p class="result-stream">Arts</p>
+                                <div class="result-percentage">94.5%</div>
+                                <span class="result-rank">1st Rank - Political Science</span>
+                            </div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-photo">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul Das">
+                            </div>
+                            <div class="result-info">
+                                <h3>Rahul Das</h3>
+                                <p class="result-stream">Arts</p>
+                                <div class="result-percentage">92.8%</div>
+                                <span class="result-rank">State Rank 3 - Education</span>
+                            </div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-photo">
+                                <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Meera Das">
+                            </div>
+                            <div class="result-info">
+                                <h3>Meera Das</h3>
+                                <p class="result-stream">Arts</p>
+                                <div class="result-percentage">91.5%</div>
+                                <span class="result-rank">State Rank 5 - History</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Science Toppers 2024 -->
+                <div class="stream-section" data-stream="science">
+                    <h3 style="margin: 50px 0 20px; color: var(--secondary);">Science Stream Toppers</h3>
+                    <div class="toppers-grid" data-science-2024>
+                        <div class="result-card">
+                            <div class="result-photo">
+                                <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Arun Kalita">
+                            </div>
+                            <div class="result-info">
+                                <h3>Arun Kalita</h3>
+                                <p class="result-stream">Science</p>
+                                <div class="result-percentage">96.2%</div>
+                                <span class="result-rank">1st Rank - Mathematics</span>
+                            </div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-photo">
+                                <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Maya Devi">
+                            </div>
+                            <div class="result-info">
+                                <h3>Maya Devi</h3>
+                                <p class="result-stream">Science</p>
+                                <div class="result-percentage">95.4%</div>
+                                <span class="result-rank">State Topper - Biology</span>
+                            </div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-photo">
+                                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Rohan Sharma">
+                            </div>
+                            <div class="result-info">
+                                <h3>Rohan Sharma</h3>
+                                <p class="result-stream">Science</p>
+                                <div class="result-percentage">94.8%</div>
+                                <span class="result-rank">JEE Advanced Qualified</span>
+                            </div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-photo">
+                                <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Priyanka Bora">
+                            </div>
+                            <div class="result-info">
+                                <h3>Priyanka Bora</h3>
+                                <p class="result-stream">Science</p>
+                                <div class="result-percentage">95.2%</div>
+                                <span class="result-rank">NEET Qualified</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Commerce Toppers 2024 -->
+                <div class="stream-section" data-stream="commerce">
+                    <h3 style="margin: 50px 0 20px; color: var(--secondary);">Commerce Stream Toppers</h3>
+                    <div class="toppers-grid" data-commerce-2024>
+                        <div class="result-card">
+                            <div class="result-photo">
+                                <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Kavita Agarwal">
+                            </div>
+                            <div class="result-info">
+                                <h3>Kavita Agarwal</h3>
+                                <p class="result-stream">Commerce</p>
+                                <div class="result-percentage">95.8%</div>
+                                <span class="result-rank">1st Rank - Accountancy</span>
+                            </div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-photo">
+                                <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="Vikash Jalan">
+                            </div>
+                            <div class="result-info">
+                                <h3>Vikash Jalan</h3>
+                                <p class="result-stream">Commerce</p>
+                                <div class="result-percentage">94.2%</div>
+                                <span class="result-rank">State Rank 2 - Business Studies</span>
+                            </div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-photo">
+                                <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Priyanka Das">
+                            </div>
+                            <div class="result-info">
+                                <h3>Priyanka Das</h3>
+                                <p class="result-stream">Commerce</p>
+                                <div class="result-percentage">93.6%</div>
+                                <span class="result-rank">Gold Medalist - Economics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2023 Results (Similar structure) -->
+            <div class="year-section" data-year="2023" style="display: none;">
+                <h2 class="year-title">AHSEC Results 2023</h2>
+                <!-- Add 2023 toppers here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Download Result Brochures</h2>
+                <p>Get detailed results and achievements of our students</p>
+            </div>
+            
+            <div class="download-grid">
+                <div class="download-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>Arts Results 2024</h3>
+                    <p>Complete list of Arts stream toppers</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 20px;" download>Download PDF</a>
+                </div>
+                
+                <div class="download-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>Science Results 2024</h3>
+                    <p>Complete list of Science stream toppers</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 20px;" download>Download PDF</a>
+                </div>
+                
+                <div class="download-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>Commerce Results 2024</h3>
+                    <p>Complete list of Commerce stream toppers</p>
+                    <a href="#" class="btn btn-outline" style="margin-top: 20px;" download>Download PDF</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for Filtering -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const streamFilter = document.getElementById('streamFilter');
+            const yearFilter = document.getElementById('yearFilter');
+            const yearSections = document.querySelectorAll('.year-section');
+            const streamSections = document.querySelectorAll('.stream-section');
+            
+            function filterResults() {
+                const selectedStream = streamFilter.value;
+                const selectedYear = yearFilter.value;
+                
+                // Filter by year
+                yearSections.forEach(section => {
+                    if (section.dataset.year === selectedYear || selectedYear === 'all') {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+                
+                // Filter by stream within visible year sections
+                streamSections.forEach(section => {
+                    if (selectedStream === 'all' || section.dataset.stream === selectedStream) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+            }
+            
+            streamFilter.addEventListener('change', filterResults);
+            yearFilter.addEventListener('change', filterResults);
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo"><span data-school-name>Pragya<span>Valley</span></span></a>
+                    <p data-school-tagline>Assam's premier higher secondary institute affiliated to AHSEC. Excellence in Arts, Science & Commerce since 1998.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="faculty.html">Faculty</a></li>
+                        <li><a href="results.html">Results</a></li>
+                        <li><a href="admission.html">Admission</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="arts.html">Arts Stream</a></li>
+                        <li><a href="science.html">Science Stream</a></li>
+                        <li><a href="commerce.html">Commerce Stream</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> <span data-address>G.S. Road</span>, <span data-city>Guwahati</span>, <span data-state>Assam</span> - <span data-pincode>781005</span></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+917000000000" data-phone>+91 70000 00000</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@pragyavalley.edu.in" data-email>info@pragyavalley.edu.in</a></li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 8AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 <span data-school-name>Pragya Valley Academy</span>. All rights reserved. | Affiliated to AHSEC (Code: 18007)</p>
+            </div>
+        </div>
+    </footer>
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/config.js"></script>
+    <!-- 🎯 DYNAMIC DEMO CONTROLLER -->
+    <script src="js/dynamic-demo.js"></script>
+    <script src="js/config-loader.js"></script>
+    <script src="js/footer-generator.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

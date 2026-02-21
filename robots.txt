@@ -1,0 +1,25 @@
+# Robots.txt for Pragya Valley Academy
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /includes/
+
+# Allow Googlebot access to everything
+User-agent: Googlebot
+Allow: /
+
+# Sitemap location
+Sitemap: https://pragyavalley.edu.in/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 10
+
+# Disallow access to certain file types
+Disallow: /*.pdf$
+Disallow: /*.doc$
+Disallow: /*.docx$
+Disallow: /*.xls$
+Disallow: /*.xlsx$

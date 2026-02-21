@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <title>About Us - Pragya Valley Academy | Top AHSEC College Assam Since 1998</title>
+    <meta name="description" content="Learn about Pragya Valley Academy's 25+ years of excellence in higher secondary education in Assam. Our mission, vision, academic philosophy, and mentoring approach.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Page-specific styles */
+        .page-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 160px 0 80px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M0 0 L100 100 M100 0 L0 100" stroke="white" stroke-width="1"/></svg>');
+            background-size: 30px 30px;
+        }
+        
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .breadcrumb {
+            position: relative;
+            margin-top: 20px;
+        }
+        
+        .breadcrumb a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+        
+        .breadcrumb span {
+            color: white;
+        }
+        
+        .story-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+        
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .story-image {
+            position: relative;
+        }
+        
+        .story-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .story-image .founder-quote {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            background: var(--secondary);
+            color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            max-width: 250px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .story-image .founder-quote i {
+            font-size: 40px;
+            opacity: 0.3;
+            margin-bottom: 10px;
+        }
+        
+        .milestones {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .milestone-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--bg-light);
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition);
+        }
+        
+        .milestone-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .milestone-item h3 {
+            font-size: 36px;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .mission-vision {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+        
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        
+        .mission-card, .vision-card {
+            padding: 50px 40px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mission-card::before, .vision-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-2);
+        }
+        
+        .mission-card:hover, .vision-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .mission-card i, .vision-card i {
+            font-size: 60px;
+            color: var(--secondary);
+            margin-bottom: 24px;
+        }
+        
+        .philosophy {
+            padding: 80px 0;
+            background: var(--white);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .value-item {
+            text-align: center;
+            padding: 40px 30px;
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        
+        .value-item:hover {
+            transform: translateY(-8px);
+            background: white;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 32px;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .value-item:hover .value-icon {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .leadership-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+        
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .leader-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+        
+        .leader-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .leader-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .leader-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .leader-card:hover .leader-image img {
+            transform: scale(1.1);
+        }
+        
+        .leader-info {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .leader-info h3 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .leader-info .position {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .leader-info p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        
+        .stats-section {
+            padding: 60px 0;
+            background: var(--gradient-1);
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-box h3 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        
+        .stat-box p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 1024px) {
+            .values-grid,
+            .leadership-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .story-grid,
+            .mission-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .values-grid,
+            .leadership-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .story-image .founder-quote {
+                position: static;
+                margin-top: 20px;
+                max-width: 100%;
+            }
+            
+            .page-header h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- STICKY ADMISSION BUTTON -->
+    <div class="sticky-admission">
+        <a href="admission.html" class="sticky-btn" aria-label="Apply for Admission">
+            <i class="fas fa-graduation-cap"></i>
+            <span class="tooltip">Apply Now</span>
+        </a>
+    </div>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/917000000000?text=Hello%20Pragya%20Valley%20Academy%2C%20I%27m%20interested%20in%20admission%20for%202025-26" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">Pragya<span>Valley</span></span>
+            </a>
+            
+            <button class="mobile-toggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="faculty.html">Faculty</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="notices.html">Notices</a></li>
+                <li><a href="notices.html">Notices</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admission.html" class="nav-cta">Admission 2025</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <h1>About Pragya Valley Academy</h1>
+            <p>Assam's most trusted name in higher secondary education since 1998</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <span>About Us</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTITUTE STORY -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content" data-aos="fade-right">
+                    <span class="section-subtitle">Our Journey</span>
+                    <h2>25+ Years of Academic Excellence</h2>
+                    <p>Founded in 1998 by <strong>Dr. Ranjan Bora</strong> and a team of passionate educators, Pragya Valley Academy started with a simple mission: to provide quality higher secondary education to the students of Assam. What began as a small coaching center with just 50 students in a single classroom has now grown into one of the most prestigious institutes in Northeast India.</p>
+                    
+                    <p>Over the past two decades, we have consistently produced top rankers in AHSEC examinations, with many of our alumni going on to become doctors, engineers, civil servants, and business leaders. Our success lies in our unique teaching methodology that combines traditional values with modern educational techniques.</p>
+                    
+                    <p>Today, with a campus spanning 5 acres, state-of-the-art facilities, and a team of 50+ expert faculty members, we continue our commitment to nurturing young minds and shaping the future leaders of tomorrow.</p>
+                    
+                    <div class="milestones">
+                        <div class="milestone-item">
+                            <h3>1998</h3>
+                            <p>Year Founded</p>
+                        </div>
+                        <div class="milestone-item">
+                            <h3>5000+</h3>
+                            <p>Alumni</p>
+                        </div>
+                        <div class="milestone-item">
+                            <h3>50+</h3>
+                            <p>Expert Faculty</p>
+                        </div>
+                        <div class="milestone-item">
+                            <h3>95%</h3>
+                            <p>Success Rate</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="story-image" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Pragya Valley Academy History">
+                    <div class="founder-quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>Education is not just about passing exams; it's about building character and creating responsible citizens.</p>
+                        <strong>- Dr. Ranjan Bora, Founder</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISSION & VISION -->
+    <section class="mission-vision">
+        <div class="container">
+            <div class="mission-grid">
+                <div class="mission-card" data-aos="fade-up">
+                    <i class="fas fa-bullseye"></i>
+                    <h2>Our Mission</h2>
+                    <p>To nurture young minds and prepare them for academic excellence and life beyond textbooks. We strive to create an environment where students discover their potential, develop critical thinking skills, and grow into responsible citizens who contribute positively to society.</p>
+                    
+                    <ul style="text-align: left; margin-top: 20px; list-style: none;">
+                        <li style="margin: 10px 0;"><i class="fas fa-check" style="color: var(--accent); margin-right: 10px;"></i> Excellence in Academics</li>
+                        <li style="margin: 10px 0;"><i class="fas fa-check" style="color: var(--accent); margin-right: 10px;"></i> Holistic Development</li>
+                        <li style="margin: 10px 0;"><i class="fas fa-check" style="color: var(--accent); margin-right: 10px;"></i> Character Building</li>
+                    </ul>
+                </div>
+                
+                <div class="vision-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-eye"></i>
+                    <h2>Our Vision</h2>
+                    <p>To be the premier higher secondary institute in Northeast India, recognized for academic excellence, innovative teaching methods, and holistic student development. We envision a future where every Pragya Valley student becomes a leader in their chosen field.</p>
+                    
+                    <ul style="text-align: left; margin-top: 20px; list-style: none;">
+                        <li style="margin: 10px 0;"><i class="fas fa-check" style="color: var(--accent); margin-right: 10px;"></i> Top-ranked Institute in NE India</li>
+                        <li style="margin: 10px 0;"><i class="fas fa-check" style="color: var(--accent); margin-right: 10px;"></i> Innovation in Teaching</li>
+                        <li style="margin: 10px 0;"><i class="fas fa-check" style="color: var(--accent); margin-right: 10px;"></i> Global Recognition</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-box" data-aos="zoom-in">
+                    <h3><span class="counter" data-target="25">0</span>+</h3>
+                    <p>Years of Excellence</p>
+                </div>
+                <div class="stat-box" data-aos="zoom-in" data-aos-delay="100">
+                    <h3><span class="counter" data-target="5000">0</span>+</h3>
+                    <p>Alumni Worldwide</p>
+                </div>
+                <div class="stat-box" data-aos="zoom-in" data-aos-delay="200">
+                    <h3><span class="counter" data-target="50">0</span>+</h3>
+                    <p>Expert Faculty</p>
+                </div>
+                <div class="stat-box" data-aos="zoom-in" data-aos-delay="300">
+                    <h3><span class="counter" data-target="100">0</span>%</h3>
+                    <p>Pass Percentage</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACADEMIC PHILOSOPHY -->
+    <section class="philosophy">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-subtitle">Our Philosophy</span>
+                <h2>Academic Approach</h2>
+                <p>The principles that guide our teaching and mentoring</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-item" data-aos="fade-up">
+                    <div class="value-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Conceptual Learning</h3>
+                    <p>We focus on building strong foundations through conceptual understanding rather than rote learning. Our teachers ensure every concept is understood deeply.</p>
+                </div>
+                
+                <div class="value-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Personal Mentoring</h3>
+                    <p>Every student gets individual attention with dedicated mentors tracking their progress, identifying areas of improvement, and providing personalized guidance.</p>
+                </div>
+                
+                <div class="value-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="value-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Result-Driven Approach</h3>
+                    <p>Our teaching strategies are designed to maximize board exam performance through regular assessments, mock tests, and performance analytics while ensuring deep learning.</p>
+                </div>
+                
+                <div class="value-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation in Teaching</h3>
+                    <p>We incorporate modern teaching methods, digital tools, and interactive learning techniques to make education engaging and effective.</p>
+                </div>
+                
+                <div class="value-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Holistic Development</h3>
+                    <p>Beyond academics, we focus on personality development, communication skills, and extracurricular activities to ensure all-round growth.</p>
+                </div>
+                
+                <div class="value-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="value-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Values & Ethics</h3>
+                    <p>We instill strong moral values, ethics, and social responsibility in our students, preparing them to be good human beings first.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENTORING APPROACH -->
+    <section class="why-choose" style="background: var(--gradient-2);">
+        <div class="container">
+            <div class="section-title light">
+                <h2>Our Mentoring Approach</h2>
+                <p>Beyond traditional teaching - building futures</p>
+            </div>
+            
+            <div class="features-grid" style="grid-template-columns: repeat(4, 1fr);">
+                <div class="feature-item" data-aos="zoom-in">
+                    <i class="fas fa-user-check" style="font-size: 40px; margin-bottom: 16px;"></i>
+                    <h3>Individual Attention</h3>
+                    <p>Student-teacher ratio of 20:1 ensures personalized attention for every student</p>
+                </div>
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-calendar-check" style="font-size: 40px; margin-bottom: 16px;"></i>
+                    <h3>Regular Assessments</h3>
+                    <p>Weekly tests, monthly exams, and instant feedback for continuous improvement</p>
+                </div>
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-comments" style="font-size: 40px; margin-bottom: 16px;"></i>
+                    <h3>Parent-Teacher Meetings</h3>
+                    <p>Regular updates and collaborative approach with parents for student success</p>
+                </div>
+                <div class="feature-item" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-road" style="font-size: 40px; margin-bottom: 16px;"></i>
+                    <h3>Career Guidance</h3>
+                    <p>Expert counseling for future career paths and competitive exam preparation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEADERSHIP TEAM -->
+    <section class="leadership-section">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-subtitle">Our Leaders</span>
+                <h2>Meet Our Leadership Team</h2>
+                <p>Visionaries who guide our institute towards excellence</p>
+            </div>
+            
+            <div class="leadership-grid">
+                <div class="leader-card" data-aos="fade-up">
+                    <div class="leader-image">
+                        <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Dr. Ranjan Bora">
+                    </div>
+                    <div class="leader-info">
+                        <h3>Dr. Ranjan Bora</h3>
+                        <p class="position">Founder & Chairman</p>
+                        <p>Ph.D. in Education, 30+ years of experience in educational leadership. Recipient of "Best Educator Award" 2020.</p>
+                    </div>
+                </div>
+                
+                <div class="leader-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="leader-image">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Prof. Minakshi Devi">
+                    </div>
+                    <div class="leader-info">
+                        <h3>Prof. Minakshi Devi</h3>
+                        <p class="position">Principal</p>
+                        <p>M.A., M.Phil in Economics, 22+ years in higher secondary education. Former AHSEC board member.</p>
+                    </div>
+                </div>
+                
+                <div class="leader-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="leader-image">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Dr. Naba Kalita">
+                    </div>
+                    <div class="leader-info">
+                        <h3>Dr. Naba Kalita</h3>
+                        <p class="position">Academic Director</p>
+                        <p>Ph.D. in Chemistry, 20+ years of experience. Developed innovative curriculum for Science stream.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULT-DRIVEN STRATEGY -->
+    <section class="philosophy" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Result-Driven Strategy</h2>
+                <p>How we ensure 95%+ success rate year after year</p>
+            </div>
+            
+            <div class="values-grid" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="value-item" style="display: flex; text-align: left; gap: 20px;" data-aos="fade-right">
+                    <div class="value-icon" style="margin: 0;">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div>
+                        <h3>Structured Curriculum</h3>
+                        <p>Aligned with AHSEC pattern with additional focus on conceptual clarity and practical applications</p>
+                    </div>
+                </div>
+                
+                <div class="value-item" style="display: flex; text-align: left; gap: 20px;" data-aos="fade-left">
+                    <div class="value-icon" style="margin: 0;">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <div>
+                        <h3>Regular Mock Tests</h3>
+                        <p>Monthly tests following AHSEC pattern to build exam temperament and time management</p>
+                    </div>
+                </div>
+                
+                <div class="value-item" style="display: flex; text-align: left; gap: 20px;" data-aos="fade-right">
+                    <div class="value-icon" style="margin: 0;">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h3>Doubt Clearing Sessions</h3>
+                        <p>Extra classes and dedicated doubt-clearing hours for students needing additional support</p>
+                    </div>
+                </div>
+                
+                <div class="value-item" style="display: flex; text-align: left; gap: 20px;" data-aos="fade-left">
+                    <div class="value-icon" style="margin: 0;">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div>
+                        <h3>Performance Tracking</h3>
+                        <p>Digital tracking of each student's progress with detailed analytics and personalized reports</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section" style="background: var(--gradient-1);">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Begin Your Journey?</h2>
+                <p>Join Pragya Valley Academy and shape your future with expert guidance</p>
+                <div class="cta-buttons">
+                    <a href="admission.html" class="btn btn-primary btn-large">Apply Now</a>
+                    <a href="contact.html" class="btn btn-outline-light">Schedule a Visit</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo">Pragya<span>Valley</span></a>
+                    <p>Assam's premier higher secondary institute affiliated to AHSEC. Excellence in Arts, Science & Commerce since 1998.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="faculty.html">Faculty</a></li>
+                        <li><a href="results.html">Results</a></li>
+                        <li><a href="admission.html">Admission</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="notices.html">Notices</a></li>
+                        <li><a href="notices.html">Notices</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="arts.html">Arts Stream</a></li>
+                        <li><a href="science.html">Science Stream</a></li>
+                        <li><a href="commerce.html">Commerce Stream</a></li>
+                        <li><a href="integrated.html">Integrated Coaching</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> G.S. Road, Guwahati, Assam - 781005</li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+917000000000">+91 70000 00000</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@pragyavalley.edu.in">info@pragyavalley.edu.in</a></li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 8AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pragya Valley Academy. All rights reserved. | Affiliated to AHSEC (Code: 18007) | 
+                <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Use</a></p>
+            </div>
+        </div>
+    </footer>
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/config.js"></script>
+    <!-- 🎯 DYNAMIC DEMO CONTROLLER -->
+    <script src="js/dynamic-demo.js"></script>
+    <script src="js/config-loader.js"></script>
+    <script src="js/footer-generator.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

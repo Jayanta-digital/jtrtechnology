@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
+    <title>Academic Programs - Arts, Science & Commerce | Pragya Valley Academy</title>
+    <meta name="description" content="Explore our higher secondary programs in Arts, Science, and Commerce streams at Pragya Valley Academy. AHSEC affiliated, expert faculty, and proven results.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 160px 0 80px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><circle cx="50" cy="50" r="40" stroke="white" stroke-width="1" fill="none"/></svg>');
+            background-size: 50px 50px;
+        }
+        
+        .programs-showcase {
+            padding: 80px 0;
+            background: var(--white);
+        }
+        
+        .program-card-large {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 80px;
+            padding: 40px;
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        
+        .program-card-large:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .program-card-large:nth-child(even) .program-image {
+            order: 2;
+        }
+        
+        .program-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .program-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .program-card-large:hover .program-image img {
+            transform: scale(1.05);
+        }
+        
+        .program-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .program-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .program-features-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+        
+        .program-features-list li {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .program-features-list i {
+            color: var(--accent);
+            font-size: 20px;
+        }
+        
+        .stats-mini {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .stat-mini-item {
+            text-align: center;
+        }
+        
+        .stat-mini-item h4 {
+            font-size: 28px;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+        
+        .comparison-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .comparison-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .comparison-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .comparison-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-2);
+        }
+        
+        .comparison-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: var(--primary);
+        }
+        
+        .subject-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .subject-tag {
+            padding: 5px 15px;
+            background: var(--bg-light);
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-dark);
+        }
+        
+        .career-prospects {
+            margin-top: 20px;
+            text-align: left;
+        }
+        
+        .career-prospects h4 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .career-prospects ul {
+            list-style: none;
+        }
+        
+        .career-prospects li {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+        
+        .career-prospects li i {
+            color: var(--accent);
+            margin-right: 8px;
+        }
+        
+        @media (max-width: 1024px) {
+            .comparison-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .program-card-large {
+                grid-template-columns: 1fr;
+            }
+            
+            .program-card-large:nth-child(even) .program-image {
+                order: 0;
+            }
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .program-content h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- STICKY ADMISSION BUTTON -->
+    <div class="sticky-admission">
+        <a href="admission.html" class="sticky-btn">
+            <i class="fas fa-graduation-cap"></i>
+            <span class="tooltip">Apply Now</span>
+        </a>
+    </div>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/917000000000?text=Hello%20Pragya%20Valley%20Academy%2C%20I'm%20interested%20in%20your%20programs" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Pragya<span>Valley</span></a>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="programs.html" class="active">Programs</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="faculty.html">Faculty</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="notices.html">Notices</a></li>
+                <li><a href="notices.html">Notices</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admission.html" class="nav-cta">Admission 2025</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Academic Programs</h1>
+            <p>Choose your path to success with expert guidance and proven results</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <span>Programs</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAMS SHOWCASE -->
+    <section class="programs-showcase">
+        <div class="container">
+            <!-- Arts Stream -->
+            <div class="program-card-large" data-aos="fade-up">
+                <div class="program-image">
+                    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Arts Stream">
+                </div>
+                <div class="program-content">
+                    <span class="program-badge">Humanities & Social Sciences</span>
+                    <h2>Arts Stream</h2>
+                    <p>Our Arts program is designed to develop critical thinking, analytical skills, and a deep understanding of human society and culture. With experienced faculty and comprehensive study material, we ensure excellent AHSEC results.</p>
+                    
+                    <ul class="program-features-list">
+                        <li><i class="fas fa-check-circle"></i> Subjects: Political Science, Education, Economics, History, Assamese, English</li>
+                        <li><i class="fas fa-check-circle"></i> Expert faculty from Gauhati University</li>
+                        <li><i class="fas fa-check-circle"></i> Civil services foundation coaching included</li>
+                        <li><i class="fas fa-check-circle"></i> 94% average AHSEC results over last 5 years</li>
+                    </ul>
+                    
+                    <div class="stats-mini">
+                        <div class="stat-mini-item">
+                            <h4>94%</h4>
+                            <p>Success Rate</p>
+                        </div>
+                        <div class="stat-mini-item">
+                            <h4>15+</h4>
+                            <p>Expert Faculty</p>
+                        </div>
+                        <div class="stat-mini-item">
+                            <h4>500+</h4>
+                            <p>Students</p>
+                        </div>
+                    </div>
+                    
+                    <a href="arts.html" class="btn btn-primary">Learn More About Arts <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Science Stream -->
+            <div class="program-card-large" data-aos="fade-up">
+                <div class="program-content">
+                    <span class="program-badge">Medical & Non-Medical</span>
+                    <h2>Science Stream</h2>
+                    <p>Our Science program offers comprehensive preparation for AHSEC board exams along with integrated coaching for competitive exams like JEE and NEET. State-of-the-art laboratories and experienced faculty ensure conceptual clarity.</p>
+                    
+                    <ul class="program-features-list">
+                        <li><i class="fas fa-check-circle"></i> Subjects: Physics, Chemistry, Mathematics, Biology, Computer Science</li>
+                        <li><i class="fas fa-check-circle"></i> Fully equipped modern laboratories</li>
+                        <li><i class="fas fa-check-circle"></i> Integrated JEE/NEET coaching</li>
+                        <li><i class="fas fa-check-circle"></i> 96% average AHSEC results with 25+ competitive exam selections</li>
+                    </ul>
+                    
+                    <div class="stats-mini">
+                        <div class="stat-mini-item">
+                            <h4>96%</h4>
+                            <p>Success Rate</p>
+                        </div>
+                        <div class="stat-mini-item">
+                            <h4>20+</h4>
+                            <p>Expert Faculty</p>
+                        </div>
+                        <div class="stat-mini-item">
+                            <h4>600+</h4>
+                            <p>Students</p>
+                        </div>
+                    </div>
+                    
+                    <a href="science.html" class="btn btn-primary">Learn More About Science <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="program-image">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Science Stream">
+                </div>
+            </div>
+
+            <!-- Commerce Stream -->
+            <div class="program-card-large" data-aos="fade-up">
+                <div class="program-image">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Commerce Stream">
+                </div>
+                <div class="program-content">
+                    <span class="program-badge">Business & Finance</span>
+                    <h2>Commerce Stream</h2>
+                    <p>Our Commerce program prepares students for careers in business, finance, and accounting. With integrated CA foundation coaching and expert faculty from the industry, we ensure comprehensive learning.</p>
+                    
+                    <ul class="program-features-list">
+                        <li><i class="fas fa-check-circle"></i> Subjects: Accountancy, Business Studies, Economics, Mathematics, IT</li>
+                        <li><i class="fas fa-check-circle"></i> CA foundation preparation integrated</li>
+                        <li><i class="fas fa-check-circle"></i> Financial literacy and stock market workshops</li>
+                        <li><i class="fas fa-check-circle"></i> 95% average AHSEC results with top ranks</li>
+                    </ul>
+                    
+                    <div class="stats-mini">
+                        <div class="stat-mini-item">
+                            <h4>95%</h4>
+                            <p>Success Rate</p>
+                        </div>
+                        <div class="stat-mini-item">
+                            <h4>15+</h4>
+                            <p>Expert Faculty</p>
+                        </div>
+                        <div class="stat-mini-item">
+                            <h4>400+</h4>
+                            <p>Students</p>
+                        </div>
+                    </div>
+                    
+                    <a href="commerce.html" class="btn btn-primary">Learn More About Commerce <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUICK COMPARISON -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-subtitle">Choose Your Path</span>
+                <h2>Stream Comparison</h2>
+                <p>Find the right stream that matches your interests and career goals</p>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-card" data-aos="flip-left">
+                    <div class="comparison-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Arts Stream</h3>
+                    <div class="subject-tags">
+                        <span class="subject-tag">Political Science</span>
+                        <span class="subject-tag">Education</span>
+                        <span class="subject-tag">Economics</span>
+                        <span class="subject-tag">History</span>
+                        <span class="subject-tag">Assamese</span>
+                    </div>
+                    <div class="career-prospects">
+                        <h4>Career Options:</h4>
+                        <ul>
+                            <li><i class="fas fa-gavel"></i> Civil Services (IAS, APS)</li>
+                            <li><i class="fas fa-balance-scale"></i> Law (BA.LLB)</li>
+                            <li><i class="fas fa-chalkboard-teacher"></i> Teaching & Academia</li>
+                            <li><i class="fas fa-pen-fancy"></i> Journalism</li>
+                            <li><i class="fas fa-landmark"></i> Archaeology</li>
+                        </ul>
+                    </div>
+                    <a href="arts.html" style="margin-top: 20px; display: inline-block; color: var(--primary);">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="comparison-card" data-aos="flip-left" data-aos-delay="100">
+                    <div class="comparison-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Science Stream</h3>
+                    <div class="subject-tags">
+                        <span class="subject-tag">Physics</span>
+                        <span class="subject-tag">Chemistry</span>
+                        <span class="subject-tag">Maths</span>
+                        <span class="subject-tag">Biology</span>
+                        <span class="subject-tag">Computer Science</span>
+                    </div>
+                    <div class="career-prospects">
+                        <h4>Career Options:</h4>
+                        <ul>
+                            <li><i class="fas fa-stethoscope"></i> Medical (MBBS, BDS)</li>
+                            <li><i class="fas fa-microchip"></i> Engineering (B.Tech, B.E.)</li>
+                            <li><i class="fas fa-flask"></i> Research (B.Sc, M.Sc)</li>
+                            <li><i class="fas fa-laptop-code"></i> Computer Science</li>
+                            <li><i class="fas fa-dna"></i> Biotechnology</li>
+                        </ul>
+                    </div>
+                    <a href="science.html" style="margin-top: 20px; display: inline-block; color: var(--primary);">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="comparison-card" data-aos="flip-left" data-aos-delay="200">
+                    <div class="comparison-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Commerce Stream</h3>
+                    <div class="subject-tags">
+                        <span class="subject-tag">Accountancy</span>
+                        <span class="subject-tag">Business Studies</span>
+                        <span class="subject-tag">Economics</span>
+                        <span class="subject-tag">Maths</span>
+                        <span class="subject-tag">IT</span>
+                    </div>
+                    <div class="career-prospects">
+                        <h4>Career Options:</h4>
+                        <ul>
+                            <li><i class="fas fa-calculator"></i> Chartered Accountant (CA)</li>
+                            <li><i class="fas fa-chart-bar"></i> Company Secretary (CS)</li>
+                            <li><i class="fas fa-coins"></i> Investment Banking</li>
+                            <li><i class="fas fa-file-invoice"></i> Finance (CFA)</li>
+                            <li><i class="fas fa-briefcase"></i> MBA</li>
+                        </ul>
+                    </div>
+                    <a href="commerce.html" style="margin-top: 20px; display: inline-block; color: var(--primary);">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADMISSION GUIDANCE -->
+    <section class="why-choose" style="background: var(--gradient-1);">
+        <div class="container">
+            <div class="section-title light">
+                <h2>Need Help Choosing a Stream?</h2>
+                <p>Our career counselors can help you make the right choice</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="contact.html" class="btn btn-primary btn-large">Talk to a Counselor</a>
+                <a href="admission.html" class="btn btn-outline-light" style="margin-left: 20px;">Apply Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo">Pragya<span>Valley</span></a>
+                    <p>Assam's premier higher secondary institute affiliated to AHSEC. Excellence in Arts, Science & Commerce since 1998.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="faculty.html">Faculty</a></li>
+                        <li><a href="results.html">Results</a></li>
+                        <li><a href="admission.html">Admission</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="arts.html">Arts Stream</a></li>
+                        <li><a href="science.html">Science Stream</a></li>
+                        <li><a href="commerce.html">Commerce Stream</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> G.S. Road, Guwahati, Assam - 781005</li>
+                        <li><i class="fas fa-phone"></i> +91 70000 00000</li>
+                        <li><i class="fas fa-envelope"></i> info@pragyavalley.edu.in</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 8AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pragya Valley Academy. All rights reserved. | Affiliated to AHSEC</p>
+            </div>
+        </div>
+    </footer>
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/config.js"></script>
+    <!-- 🎯 DYNAMIC DEMO CONTROLLER -->
+    <script src="js/dynamic-demo.js"></script>
+    <script src="js/config-loader.js"></script>
+    <script src="js/footer-generator.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

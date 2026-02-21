@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Pragya Valley Academy</title>
+    <meta name="description" content="Page not found. Please check the URL or return to our homepage.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .error-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .error-number {
+            font-size: 180px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 10px 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .error-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .error-message {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .error-btn {
+            padding: 16px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .error-btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .error-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .error-btn-outline {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+        }
+        
+        .error-btn-outline:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .search-form {
+            margin-top: 40px;
+            display: flex;
+            gap: 10px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .search-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 40px;
+            font-size: 16px;
+        }
+        
+        .search-form button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 40px;
+            background: var(--secondary);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .search-form button:hover {
+            background: var(--secondary-dark);
+        }
+        
+        .helpful-links {
+            margin-top: 40px;
+        }
+        
+        .helpful-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            opacity: 0.9;
+            transition: var(--transition);
+        }
+        
+        .helpful-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .error-number {
+                font-size: 120px;
+            }
+            
+            .error-title {
+                font-size: 28px;
+            }
+            
+            .search-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-page">
+        <div class="error-content">
+            <div class="error-number">404</div>
+            <h1 class="error-title">Page Not Found</h1>
+            <p class="error-message">Oops! The page you're looking for doesn't exist or has been moved.</p>
+            
+            <div class="error-actions">
+                <a href="index.html" class="error-btn error-btn-primary">
+                    <i class="fas fa-home"></i> Go to Homepage
+                </a>
+                <a href="contact.html" class="error-btn error-btn-outline">
+                    <i class="fas fa-headset"></i> Contact Support
+                </a>
+            </div>
+            
+            <div class="search-form">
+                <input type="text" placeholder="Search our website..." id="searchInput">
+                <button onclick="searchWebsite()"><i class="fas fa-search"></i> Search</button>
+            </div>
+            
+            <div class="helpful-links">
+                <p style="margin-bottom: 15px;">Or try these helpful links:</p>
+                <a href="index.html">Home</a> •
+                <a href="about.html">About Us</a> •
+                <a href="programs.html">Programs</a> •
+                <a href="admission.html">Admission</a> •
+                <a href="contact.html">Contact</a>
+            </div>
+            
+            <div style="margin-top: 60px;">
+                <a href="index.html">
+                    <img src="https://via.placeholder.com/200x80/ffffff/333333?text=Pragya+Valley" alt="Pragya Valley Academy" style="max-width: 200px; opacity: 0.8;">
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function searchWebsite() {
+            const query = document.getElementById('searchInput').value;
+            if (query) {
+                // Redirect to Google search with site: operator
+                window.location.href = `https://www.google.com/search?q=site:pragyavalley.edu.in+${encodeURIComponent(query)}`;
+            }
+        }
+        
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchWebsite();
+            }
+        });
+    </script>
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/config-loader.js"></script>
+    <script src="js/footer-generator.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=1.0">
+    <title>Our Faculty - Expert Teachers | Pragya Valley Academy</title>
+    <meta name="description" content="Meet our expert faculty members at Pragya Valley Academy. Highly qualified teachers with years of experience in Arts, Science, and Commerce streams.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .faculty-header {
+            background: linear-gradient(135deg, #2A4B7C 0%, #3B6B9F 100%);
+            padding: 160px 0 80px;
+            color: white;
+            text-align: center;
+        }
+        
+        .faculty-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 60px 0;
+            background: var(--bg-light);
+            text-align: center;
+        }
+        
+        .faculty-stat-item h3 {
+            font-size: 48px;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .faculty-filter {
+            padding: 40px 0;
+            background: white;
+            position: sticky;
+            top: 80px;
+            z-index: 90;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 12px 30px;
+            border: 2px solid var(--primary-light);
+            background: white;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .faculty-showcase {
+            padding: 60px 0;
+        }
+        
+        .stream-title {
+            font-size: 32px;
+            color: var(--primary);
+            margin: 40px 0 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--secondary);
+        }
+        
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .faculty-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .faculty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .faculty-image {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .faculty-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .faculty-card:hover .faculty-image img {
+            transform: scale(1.1);
+        }
+        
+        .faculty-social {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px 0;
+        }
+        
+        .faculty-card:hover .faculty-social {
+            bottom: 0;
+        }
+        
+        .faculty-social a {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .faculty-social a:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .faculty-info {
+            padding: 24px;
+            text-align: center;
+        }
+        
+        .faculty-info h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .faculty-subject {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .faculty-qualification {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .faculty-experience {
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--primary-light);
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--primary);
+        }
+        
+        .department-heads {
+            padding: 60px 0;
+            background: var(--bg-light);
+        }
+        
+        .heads-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .head-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+        
+        .head-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .head-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .head-info {
+            padding: 30px;
+        }
+        
+        .head-info h3 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .head-position {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .head-message {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 1024px) {
+            .faculty-grid,
+            .heads-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .faculty-grid,
+            .heads-grid,
+            .faculty-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky elements -->
+    <div class="sticky-admission">
+        <a href="admission.html" class="sticky-btn">
+            <i class="fas fa-graduation-cap"></i>
+            <span class="tooltip">Apply Now</span>
+        </a>
+    </div>
+
+    <a href="https://wa.me/917000000000" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><span data-school-short-name>Pragya<span>Valley</span></span></a>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="faculty.html" class="active">Faculty</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="notices.html">Notices</a></li>
+                <li><a href="notices.html">Notices</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admission.html" class="nav-cta">Admission 2025</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="faculty-header">
+        <div class="container">
+            <h1>Our Expert Faculty</h1>
+            <p>Learn from the best educators in Assam with years of experience</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <span>Faculty</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Stats -->
+    <section class="faculty-stats">
+        <div class="faculty-stat-item">
+            <h3 data-faculty-count>50+</h3>
+            <p>Total Faculty Members</p>
+        </div>
+        <div class="faculty-stat-item">
+            <h3>15+</h3>
+            <p>Years Average Experience</p>
+        </div>
+        <div class="faculty-stat-item">
+            <h3>10+</h3>
+            <p>PhD Holders</p>
+        </div>
+        <div class="faculty-stat-item">
+            <h3>25+</h3>
+            <p>Post Graduates</p>
+        </div>
+    </section>
+
+    <!-- Department Heads -->
+    <section class="department-heads">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-subtitle">Leadership</span>
+                <h2>Department Heads</h2>
+                <p>Leading our academic departments with excellence</p>
+            </div>
+            
+            <div class="heads-grid">
+                <!-- Arts Head -->
+                <div class="head-card" data-aos="fade-up">
+                    <div class="head-image">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Prof. Minakshi Devi">
+                    </div>
+                    <div class="head-info">
+                        <h3>Prof. Minakshi Devi</h3>
+                        <p class="head-position">Head of Arts Department</p>
+                        <p class="head-message">"Arts education is about understanding human society and developing critical thinking."</p>
+                        <p>M.A., M.Phil - 22+ years experience</p>
+                    </div>
+                </div>
+                
+                <!-- Science Head -->
+                <div class="head-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="head-image">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Dr. Naba Kalita">
+                    </div>
+                    <div class="head-info">
+                        <h3>Dr. Naba Kalita</h3>
+                        <p class="head-position">Head of Science Department</p>
+                        <p class="head-message">"Science is not just about formulas, it's about understanding the world around us."</p>
+                        <p>Ph.D. Chemistry - 20+ years experience</p>
+                    </div>
+                </div>
+                
+                <!-- Commerce Head -->
+                <div class="head-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="head-image">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Prof. Rita Sharma">
+                    </div>
+                    <div class="head-info">
+                        <h3>Prof. Rita Sharma</h3>
+                        <p class="head-position">Head of Commerce Department</p>
+                        <p class="head-message">"Commerce education opens doors to endless opportunities in the business world."</p>
+                        <p>M.Com, CA (Inter) - 15+ years experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Filter -->
+    <section class="faculty-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Faculty</button>
+                <button class="filter-btn" data-filter="arts">Arts Stream</button>
+                <button class="filter-btn" data-filter="science">Science Stream</button>
+                <button class="filter-btn" data-filter="commerce">Commerce Stream</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arts Faculty -->
+    <section class="faculty-showcase" id="arts-faculty">
+        <div class="container">
+            <h2 class="stream-title">Arts Faculty</h2>
+            <div class="faculty-grid" data-faculty-arts>
+                <div class="faculty-card">
+                    <div class="faculty-image">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Prof. Minakshi Devi">
+                        <div class="faculty-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Prof. Minakshi Devi</h3>
+                        <p class="faculty-subject">Economics Expert</p>
+                        <p class="faculty-qualification">M.A., M.Phil</p>
+                        <span class="faculty-experience">15+ years</span>
+                    </div>
+                </div>
+                
+                <div class="faculty-card">
+                    <div class="faculty-image">
+                        <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Dr. Anil Das">
+                        <div class="faculty-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Dr. Anil Das</h3>
+                        <p class="faculty-subject">Political Science</p>
+                        <p class="faculty-qualification">Ph.D. - DU</p>
+                        <span class="faculty-experience">15+ years</span>
+                    </div>
+                </div>
+                
+                <div class="faculty-card">
+                    <div class="faculty-image">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Prof. Sangeeta Bora">
+                        <div class="faculty-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Prof. Sangeeta Bora</h3>
+                        <p class="faculty-subject">Education</p>
+                        <p class="faculty-qualification">M.Ed, NET</p>
+                        <span class="faculty-experience">12+ years</span>
+                    </div>
+                </div>
+                
+                <div class="faculty-card">
+                    <div class="faculty-image">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Prof. Rajib Sharma">
+                        <div class="faculty-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Prof. Rajib Sharma</h3>
+                        <p class="faculty-subject">History</p>
+                        <p class="faculty-qualification">M.A., NET</p>
+                        <span class="faculty-experience">10+ years</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Science Faculty -->
+    <section class="faculty-showcase" id="science-faculty">
+        <div class="container">
+            <h2 class="stream-title">Science Faculty</h2>
+            <div class="faculty-grid" data-faculty-science>
+                <div class="faculty-card">
+                    <div class="faculty-image">
+                        <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Dr. Ranjan Bora">
+                        <div class="faculty-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Dr. Ranjan Bora</h3>
+                        <p class="faculty-subject">Physics HOD</p>
+                        <p class="faculty-qualification">Ph.D. - IIT Guwahati</p>
+                        <span class="faculty-experience">20+ years</span>
+                    </div>
+                </div>
+                
+                <div class="faculty-card">
+                    <div class="faculty-image">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Dr. Naba Kalita">
+                        <div class="faculty-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Dr. Naba Kalita</h3>
+                        <p class="faculty-subject">Chemistry HOD</p>
+                        <p class="faculty-qualification">Ph.D. - Gauhati University</p>
+                        <span class="faculty-experience">18+ years</span>
+                    </div>
+                </div>
+                
+                <div class="faculty-card">
+                    <div class="faculty-image">
+                        <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="Dr. Kamal Nath">
+                        <div class="faculty-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Dr. Kamal Nath</h3>
+                        <p class="faculty-subject">Mathematics</p>
+                        <p class="faculty-qualification">Ph.D. - IITG</p>
+                        <span class="faculty-experience">16+ years</span>
+                    </div>
+                </div>
+                
+                <div class="faculty-card">
+                    <div class="faculty-image">
+                        <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Prof. Rima Das">
+                        <div class="faculty-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Prof. Rima Das</h3>
+                        <p class="faculty-subject">Biology</p>
+                        <p class="faculty-qualification">M.Sc, NET</p>
+                        <span class="faculty-experience">10+ years</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commerce Faculty -->
+    <section class="faculty-showcase" id="commerce-faculty">
+        <div class="container">
+            <h2 class="stream-title">Commerce Faculty</h2>
+            <div class="faculty-grid" data-faculty-commerce>
+                <div class="faculty-card">
+                    <div class="faculty-image">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Prof. Rita Sharma">
+                        <div class="faculty-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Prof. Rita Sharma</h3>
+                        <p class="faculty-subject">Accountancy Expert</p>
+                        <p class="faculty-qualification">M.Com, CA (Inter)</p>
+                        <span class="faculty-experience">12+ years</span>
+                    </div>
+                </div>
+                
+                <div class="faculty-card">
+                    <div class="faculty-image">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="CA Rajesh Agarwal">
+                        <div class="faculty-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="faculty-info">
+                        <h3>CA Rajesh Agarwal</h3>
+                        <p class="faculty-subject">Accountancy</p>
+                        <p class="faculty-qualification">CA, M.Com</p>
+                        <span class="faculty-experience">14+ years</span>
+                    </div>
+                </div>
+                
+                <div class="faculty-card">
+                    <div class="faculty-image">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Prof. Bikash Sharma">
+                        <div class="faculty-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Prof. Bikash Sharma</h3>
+                        <p class="faculty-subject">Business Studies</p>
+                        <p class="faculty-qualification">MBA, NET</p>
+                        <span class="faculty-experience">11+ years</span>
+                    </div>
+                </div>
+                
+                <div class="faculty-card">
+                    <div class="faculty-image">
+                        <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Prof. Sneha Agarwal">
+                        <div class="faculty-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Prof. Sneha Agarwal</h3>
+                        <p class="faculty-subject">Economics</p>
+                        <p class="faculty-qualification">M.A. Economics</p>
+                        <span class="faculty-experience">8+ years</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" style="background: var(--gradient-2);">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Learn from the Best Faculty in Assam</h2>
+                <p>Join Pragya Valley Academy and get mentored by expert teachers</p>
+                <div class="cta-buttons">
+                    <a href="admission.html" class="btn btn-primary btn-large">Apply Now</a>
+                    <a href="contact.html" class="btn btn-outline-light">Schedule a Visit</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo"><span data-school-name>Pragya<span>Valley</span></span></a>
+                    <p data-school-tagline>Assam's premier higher secondary institute affiliated to AHSEC. Excellence in Arts, Science & Commerce since 1998.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="faculty.html">Faculty</a></li>
+                        <li><a href="results.html">Results</a></li>
+                        <li><a href="admission.html">Admission</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="arts.html">Arts Stream</a></li>
+                        <li><a href="science.html">Science Stream</a></li>
+                        <li><a href="commerce.html">Commerce Stream</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> <span data-address>G.S. Road</span>, <span data-city>Guwahati</span>, <span data-state>Assam</span> - <span data-pincode>781005</span></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+917000000000" data-phone>+91 70000 00000</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@pragyavalley.edu.in" data-email>info@pragyavalley.edu.in</a></li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 8AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 <span data-school-name>Pragya Valley Academy</span>. All rights reserved. | Affiliated to AHSEC (Code: 18007)</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Filter JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const artsFaculty = document.getElementById('arts-faculty');
+            const scienceFaculty = document.getElementById('science-faculty');
+            const commerceFaculty = document.getElementById('commerce-faculty');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    
+                    // Show/hide faculty sections
+                    if (filter === 'all') {
+                        artsFaculty.style.display = 'block';
+                        scienceFaculty.style.display = 'block';
+                        commerceFaculty.style.display = 'block';
+                    } else if (filter === 'arts') {
+                        artsFaculty.style.display = 'block';
+                        scienceFaculty.style.display = 'none';
+                        commerceFaculty.style.display = 'none';
+                    } else if (filter === 'science') {
+                        artsFaculty.style.display = 'none';
+                        scienceFaculty.style.display = 'block';
+                        commerceFaculty.style.display = 'none';
+                    } else if (filter === 'commerce') {
+                        artsFaculty.style.display = 'none';
+                        scienceFaculty.style.display = 'none';
+                        commerceFaculty.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/config.js"></script>
+    <!-- 🎯 DYNAMIC DEMO CONTROLLER -->
+    <script src="js/dynamic-demo.js"></script>
+    <script src="js/config-loader.js"></script>
+    <script src="js/footer-generator.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
